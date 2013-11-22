@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html ng-app="digitalSignModule">
+    <head>
+        <meta charset="ISO-8859-1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- LIBRARY files starts here --> 
+	
+	<!-- JQuery library  -->        
+	        <script type="text/javascript" src="digitalsign/scripts/lib/jqueryUI/jquery-1.7.2.min.js"></script>
+			<script type="text/javascript" src="digitalsign/scripts/lib/jqueryUI/jquery-ui.min.js"></script>
+			<script type="text/javascript" src="digitalsign/scripts/lib/jqueryUI/jquery.ui.touch-punch.js"></script>
+	 
+	<!-- Bootstrap and Hammer library  -->    
+	        <script type="text/javascript" src="digitalsign/scripts/lib/BootStrap/bootstrap.min.js"></script>
+	        <script type="text/javascript" src="digitalsign/scripts/lib/Hammer/hammer.min.js"></script>
+	        <script type="text/javascript" src="digitalsign/scripts/lib/Hammer/jquery.hammer.min.js"></script>
+	
+	<!-- Angularjs library library  -->        
+	        <script type="text/javascript" src="digitalsign/scripts/lib/angularjs_1.1.3/angular.min.js"></script>
+	        <script type="text/javascript" src="digitalsign/scripts/lib/angularjs_1.1.3/angular-cookies.min.js"></script>
+	
+	<!-- Angularjs dependent plugins  -->
+	        <script type="text/javascript" src="digitalsign/scripts/lib/Hammer/angular-hammer.min.js"></script>
+	        <script type="text/javascript" src="digitalsign/scripts/lib/angular-google-analytics.js"></script>
+	        
+	<!-- Media element library  -->
+	    	<script type="text/javascript" src="digitalsign/scripts/lib/MediaElement/mediaelement-and-player.min.js"></script>
+	        <script type="text/javascript" src="digitalsign/scripts/lib/MediaElement/mediaelementplayer.min.js"></script>
+	        
+	<!-- Barcode library Scripts  -->
+	        <script type="text/javascript" src="digitalsign/scripts/lib/barcode/bwip.js"></script>
+			<script type="text/javascript" src="digitalsign/scripts/lib/barcode/fonts.min.js"></script>
+			<script type="text/javascript" src="digitalsign/scripts/lib/barcode/renlinear.js"></script>
+			<script type="text/javascript" src="digitalsign/scripts/lib/barcode/renmatrix.js"></script>
+			<script type="text/javascript" src="digitalsign/scripts/lib/barcode/renmaximatrix.js"></script>
+			<script type="text/javascript" src="digitalsign/scripts/lib/barcode/code39.js"></script>
+			<script type="text/javascript" src="digitalsign/scripts/lib/barcode/code39ext.js"></script>
+			<script type="text/javascript" src="digitalsign/scripts/lib/barcode/canvas.js"></script>
+			<script type="text/javascript" src="digitalsign/scripts/lib/barcode/barcoderenderer.js"></script>
+
+<!-- LIBRARY files ends here -->
+
+<!-- dejdss application specific scripts starts here -->
+	
+	<!-- Controllers -->
+        <script type="text/javascript" src="digitalsign/scripts/controllers/common_controller.js"></script>
+        <script type="text/javascript" src="digitalsign/scripts/controllers/home_controller.js"></script>
+        <script type="text/javascript" src="digitalsign/scripts/controllers/index_controller.js"></script>
+        <script type="text/javascript" src="digitalsign/scripts/controllers/overview_controller.js"></script>
+        <script type="text/javascript" src="digitalsign/scripts/controllers/picture_controller.js"></script>
+        <script type="text/javascript" src="digitalsign/scripts/controllers/productedit_controller.js"></script>
+        <script type="text/javascript" src="digitalsign/scripts/controllers/review_controller.js"></script>
+        <script type="text/javascript" src="digitalsign/scripts/controllers/specification_controller.js"></script>
+        <script type="text/javascript" src="digitalsign/scripts/controllers/video_controller.js"></script>
+        <script type="text/javascript" src="digitalsign/scripts/controllers/shopperrecap_controller.js"></script>
+        <script type="text/javascript" src="digitalsign/scripts/controllers/deals_controller.js"></script>
+        <script type="text/javascript" src="digitalsign/scripts/controllers/admin_controller.js"></script>   
+        <script type="text/javascript" src="digitalsign/scripts/controllers/media_controller.js"></script>
+        <script type="text/javascript" src="digitalsign/scripts/controllers/storemap_controller.js"></script>
+      
+       
+	<!-- Modules, services, filters and directives -->
+		<script type="text/javascript" src="digitalsign/scripts/modules/modules.js"></script>
+        <script type="text/javascript" src="digitalsign/scripts/filters/filters.js"></script>
+        <script type="text/javascript" src="digitalsign/scripts/directives/directives.js"></script>
+        
+        
+        
+      <!-- services -->
+	  
+        <script type="text/javascript" src="digitalsign/scripts/services/services.js"></script>
+        <script type="text/javascript" src="digitalsign/scripts/services/price_service.js"></script>
+        <script type="text/javascript" src="digitalsign/scripts/services/product_service.js"></script>
+        <script type="text/javascript" src="digitalsign/scripts/services/flexi_service.js"></script>
+     
+        
+        
+    <!-- User Defined Script -->
+        <script type="text/javascript" src="digitalsign/scripts/lib/DigiSign.js"></script>
+<!--         <script type="text/javascript" src="digitalsign/scripts/lib/touchHandler.js"></script> -->
+<!--         <script type="text/javascript" src="digitalsign/scripts/lib/Scroll.js"></script> -->
+
+<!-- dejdss application specific scripts ends here -->
+        
+
+<!-- Styles starts here -->
+        <link rel="stylesheet" href="digitalsign/style/bootstrap_Custom.css" media="screen">
+	    <link rel="stylesheet" href="digitalsign/style/bootstrap-responsive_Custom.css" media="screen">
+    	<link href="digitalsign/scripts/lib/MediaElement/mediaelementplayer.min.css"  rel="stylesheet" />
+		<link href="digitalsign/scripts/lib/MediaElement/mejs-skins.min.css" rel="Stylesheet" />        
+        <link rel="stylesheet" href="digitalsign/style/DigiSign.css" />
+        <link rel="stylesheet" href="digitalsign/style/iconFonts.css" />
+<!-- Styles ends here -->
+        
+        <title>Digital Sign</title>
+    </head>
+    <body ng-controller="indexCntrl">
+        <div ng-view></div>
+    </body>
+</html>
