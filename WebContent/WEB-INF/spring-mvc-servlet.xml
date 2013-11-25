@@ -14,7 +14,7 @@
 	
      <!-- Scan this package for all config annotations -->
 	<context:component-scan base-package="com.sans.rest.secureservices" />
-	<context:component-scan base-package="com.howtodoinjava.web" />
+	<context:component-scan base-package="com.sans.web" />
 	
 	<security:http use-expressions="true" auto-config="true" entry-point-ref="http403EntryPoint">
     	<!-- Additional http configuration omitted -->

@@ -8,8 +8,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.sans.utils.AppUtils;
-
 public class CustomUserDetailsService implements UserDetailsService {
 	@SuppressWarnings({ "deprecation", "serial" })
 	@Override
@@ -17,9 +15,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 		UserDetails userdetail = null;
 		System.out.println("Token recieved :: " + token);
 
-		if (AppUtils.validateToken(token)) {
+		if (token.equalsIgnoreCase("Sandeep")) {
 			System.out.println("Valid token");
-			userdetail = new User(token, "password", true, true, true, true, new GrantedAuthority[] { new GrantedAuthorityImpl("ROLE_USER") });
+			userdetail = new User(token, "password", true, false, false, true, new GrantedAuthority[] { new GrantedAuthorityImpl("ROLE_USER") });
 
 		} else {
 			System.out.println("Invalid token");

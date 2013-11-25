@@ -1,4 +1,4 @@
-package com.howtodoinjava.web;
+package com.sans.web;
 
 import java.util.ArrayList;
 
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.howtodoinjava.model.User;
-import com.howtodoinjava.model.Users;
+import com.sans.model.User;
+import com.sans.model.Users;
 
 @Controller
 @RequestMapping("/users")
