@@ -1,9 +1,4 @@
-/**
- * 
- */
 package com.sans.springsupport.auth;
-
-import java.util.ArrayList;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,16 +8,25 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-public class CustomUserDetailsService implements UserDetailsService {
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException, DataAccessException {
-		System.out.println("username recieved :: " + username);
-		@SuppressWarnings("deprecation")
-		// Get this user details from database and set its roles also here
-		ArrayList<GrantedAuthority> newList = new ArrayList<GrantedAuthority>();
-		newList.add(new GrantedAuthorityImpl("ROLE_USER"));
+import com.sans.utils.AppUtils;
 
-		UserDetails user = new User(username, "password", true, true, true, true, newList);
-		return user;
+public class CustomUserDetailsService implements UserDetailsService {
+	@SuppressWarnings({ "deprecation", "serial" })
+	@Override
+	public UserDetails loadUserByUsername(String token) throws UsernameNotFoundException, DataAccessException {
+		UserDetails userdetail = null;
+		System.out.println("Token recieved :: " + token);
+
+		if (AppUtils.validateToken(token)) {
+			System.out.println("Valid token");
+			userdetail = new User(token, "password", true, true, true, true, new GrantedAuthority[] { new GrantedAuthorityImpl("ROLE_USER") });
+
+		} else {
+			System.out.println("Invalid token");
+			throw new DataAccessException(token + " is an invalid token") {
+			};
+		}
+
+		return userdetail;
 	}
 }
