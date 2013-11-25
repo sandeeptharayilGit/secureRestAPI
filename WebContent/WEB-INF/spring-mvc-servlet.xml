@@ -40,8 +40,7 @@
 	    
     </bean>
 
- 
-    
+    <bean id="jsonpCallbackFilter" class="com.sans.springsupport.filter.JsonpCallbackFilter"  />
     <bean id="customUserDetailsService" class="com.sans.springsupport.auth.CustomUserDetailsService"></bean>
     <bean id="http403EntryPoint" class="org.springframework.security.web.authentication.Http403ForbiddenEntryPoint"></bean>
     

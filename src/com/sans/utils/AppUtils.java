@@ -4,11 +4,11 @@
 package com.sans.utils;
 
 import java.io.IOException;
-
-import javax.servlet.http.HttpServletResponse;
+import java.io.OutputStream;
 
 import org.apache.commons.codec.binary.Base64;
-import org.codehaus.jackson.map.ObjectMapper;
+
+import com.sans.springsupport.wrapper.GenericResponseWrapper;
 
 /**
  * @author sandeep_ts
@@ -19,6 +19,11 @@ public class AppUtils {
 	static final byte[] jsonpstart = new String("(").getBytes();
 	static final byte[] jsonpclose = new String(");").getBytes();
 
+	/**
+	 * 
+	 * @param authHeader
+	 * @return
+	 */
 	public static boolean validateToken(String authHeader) {
 		// valid urls-safe token created using
 		// org.apache.commons.codec.binary.Base64 --> U2FuZGVlcA==
@@ -28,12 +33,21 @@ public class AppUtils {
 
 	}
 
-	public static void createjsonp(Object returnBean, String callback, HttpServletResponse response) throws IOException {
-		ObjectMapper mapper = new ObjectMapper();
-		response.getOutputStream().write(new String(callback).getBytes());
-		response.getOutputStream().write(jsonpstart);
-		response.getOutputStream().write(mapper.writeValueAsBytes(returnBean));
-		response.getOutputStream().write(jsonpclose);
-		response.getOutputStream().flush();
+	/**
+	 * 
+	 * @param wrapper
+	 * @param callback
+	 * @param out
+	 * @throws IOException
+	 */
+	public static void createjsonp(GenericResponseWrapper wrapper, String callback, OutputStream out) throws IOException {
+
+		out.write(new String(callback).getBytes());
+		out.write(jsonpstart);
+		out.write(wrapper.getData());
+		out.write(jsonpclose);
+		wrapper.setContentType("text/javascript;charset=UTF-8");
+		out.close();
 	}
+
 }
