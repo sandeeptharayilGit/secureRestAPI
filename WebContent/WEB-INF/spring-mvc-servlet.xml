@@ -22,8 +22,8 @@
     	<security:custom-filter position="PRE_AUTH_FILTER" ref="siteminderFilter" />
   	</security:http>
 
-    <bean id="siteminderFilter" class="org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter">
-	    <property name="principalRequestHeader" value="AuthHeader"/>
+    <bean id="siteminderFilter" class="com.sans.springsupport.auth.CustomPreAuthenticatedProcessingFilter">
+	    <property name="principalRequestHeader" value="SecureToken"/>
 	    <property name="authenticationManager" ref="authenticationManager" />
 	</bean>
 	

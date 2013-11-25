@@ -12,19 +12,19 @@ public class CustomUserDetailsService implements UserDetailsService {
 	@SuppressWarnings({ "deprecation", "serial" })
 	@Override
 	public UserDetails loadUserByUsername(String token) throws UsernameNotFoundException, DataAccessException {
-		UserDetails userdetail = null;
+		// UserDetails userdetail = null;
 		System.out.println("Token recieved :: " + token);
 
-		if (token.equalsIgnoreCase("Sandeep")) {
-			System.out.println("Valid token");
-			userdetail = new User(token, "password", true, false, false, true, new GrantedAuthority[] { new GrantedAuthorityImpl("ROLE_USER") });
+		/*
+		 * if (token.equalsIgnoreCase("Sandeep")) {
+		 * System.out.println("Valid token"); // userdetail = new User(token,
+		 * "password", true, false, false, true, new GrantedAuthority[] { new
+		 * GrantedAuthorityImpl("ROLE_USER") });
+		 * 
+		 * } else { System.out.println("Invalid token"); throw new
+		 * UsernameNotFoundException(token + " is an invalid token") { }; }
+		 */
 
-		} else {
-			System.out.println("Invalid token");
-			throw new DataAccessException(token + " is an invalid token") {
-			};
-		}
-
-		return userdetail;
+		return new User(token, "password", true, false, false, true, new GrantedAuthority[] { new GrantedAuthorityImpl("ROLE_USER") });
 	}
 }
