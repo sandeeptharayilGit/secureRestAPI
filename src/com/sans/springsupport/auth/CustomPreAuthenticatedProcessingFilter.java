@@ -6,6 +6,8 @@ import org.springframework.security.web.authentication.preauth.AbstractPreAuthen
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedCredentialsNotFoundException;
 import org.springframework.util.Assert;
 
+import com.sans.utils.AppUtils;
+
 /**
  * 
  * @author sandeep_ts
@@ -32,8 +34,8 @@ public class CustomPreAuthenticatedProcessingFilter extends AbstractPreAuthentic
 		if ((principal == null) && exceptionIfHeaderMissing) {
 			throw new PreAuthenticatedCredentialsNotFoundException("Security Token not found in request");
 		}
-		if (!principal.equalsIgnoreCase("Sandeep")) { // validate this token
-														// using custom logic
+		if (!AppUtils.validateToken(principal)) { // validate this token
+													// using custom logic
 			throw new PreAuthenticatedCredentialsNotFoundException("Valid Security Token not found in request");
 		}
 

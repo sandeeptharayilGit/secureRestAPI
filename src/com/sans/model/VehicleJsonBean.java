@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sans.rest.services.impl;
+package com.sans.model;
 
 /**
  * @author sandeep_ts
