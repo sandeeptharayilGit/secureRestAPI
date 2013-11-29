@@ -6,8 +6,6 @@ package com.sans.utils;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.apache.commons.codec.binary.Base64;
-
 import com.sans.springsupport.wrapper.GenericResponseWrapper;
 
 /**
@@ -27,7 +25,9 @@ public class AppUtils {
 	public static boolean validateToken(String authHeader) {
 		// valid urls-safe token created using
 		// org.apache.commons.codec.binary.Base64 --> U2FuZGVlcA==
-		boolean ret = new String(Base64.decodeBase64(authHeader)).equalsIgnoreCase("Sandeep");
+		boolean ret = ((authHeader != null) && authHeader.equalsIgnoreCase("atom"));
+		// new
+		// String(Base64.decodeBase64(authHeader)).equalsIgnoreCase("Sandeep");
 
 		return ret;
 
@@ -46,7 +46,7 @@ public class AppUtils {
 		out.write(jsonpstart);
 		out.write(wrapper.getData());
 		out.write(jsonpclose);
-		wrapper.setContentType("text/javascript;charset=UTF-8");
+		wrapper.setContentType("json");
 		out.close();
 	}
 

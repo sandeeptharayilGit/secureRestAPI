@@ -31,14 +31,16 @@ public class CustomPreAuthenticatedProcessingFilter extends AbstractPreAuthentic
 	protected Object getPreAuthenticatedPrincipal(HttpServletRequest request) {
 		String principal = request.getHeader(principalRequestHeader);
 
-		if ((principal == null) && exceptionIfHeaderMissing) {
-			throw new PreAuthenticatedCredentialsNotFoundException("Security Token not found in request");
-		}
-		if (!AppUtils.validateToken(principal)) { // validate this token
-													// using custom logic
-			throw new PreAuthenticatedCredentialsNotFoundException("Valid Security Token not found in request");
-		}
+		if (request.getMethod().equalsIgnoreCase("POST")) {
 
+			if ((principal == null) && exceptionIfHeaderMissing) {
+				throw new PreAuthenticatedCredentialsNotFoundException("Security Token not found in request");
+			}
+			if (!AppUtils.validateToken(principal)) { // validate this token
+														// using custom logic
+				throw new PreAuthenticatedCredentialsNotFoundException("Valid Security Token not found in request");
+			}
+		}
 		return principal;
 	}
 

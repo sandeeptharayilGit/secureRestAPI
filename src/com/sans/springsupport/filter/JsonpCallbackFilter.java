@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sans.springsupport.wrapper.GenericResponseWrapper;
+import com.sans.utils.AppConstants;
 import com.sans.utils.AppUtils;
 
 /**
@@ -47,6 +48,11 @@ public class JsonpCallbackFilter implements Filter {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 
+		if (httpRequest.getMethod().equalsIgnoreCase("OPTIONS") || httpRequest.getMethod().equalsIgnoreCase("POST")) {
+
+			httpResponse.setHeader("Access-Control-Allow-Origin", AppConstants.CUSTOMERDOMAINLIST.get(httpRequest.getRemoteHost()));
+			httpResponse.setHeader("Access-Control-Allow-Headers", "SecureToken,Content-Type");
+		}
 		Map<String, String[]> params = httpRequest.getParameterMap();
 
 		String callback = (params.containsKey("callback") && (params.get("callback")[0] != null)) ? (params.get("callback")[0]).trim() : "";
