@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sans.model.SharedData;
 import com.sans.model.VehicleBean;
 import com.sans.model.VehicleJsonBean;
 
@@ -35,6 +36,8 @@ public class secureRestService {
 		returnBean.setOwner("Sandeep");
 		returnBean.setBrand(vBean.getName());
 		returnBean.setModel(vBean.getModel());
+		
+		SharedData.getInstance().addList(returnBean);
 		return returnBean;
 
 	}

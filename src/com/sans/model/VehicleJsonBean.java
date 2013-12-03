@@ -8,6 +8,14 @@ package com.sans.model;
  * 
  */
 public class VehicleJsonBean {
+	@Override
+	public String toString() {
+		return "VehicleJsonBean [owner=" + owner + ", isAutomaticGear="
+				+ isAutomaticGear + ", brand=" + brand + ", model=" + model
+				+ ", engineCapacity=" + engineCapacity + ", numberOfCylinders="
+				+ numberOfCylinders + ", bhp=" + bhp + "]";
+	}
+
 	private String owner;
 	private boolean isAutomaticGear;
 	private String brand;

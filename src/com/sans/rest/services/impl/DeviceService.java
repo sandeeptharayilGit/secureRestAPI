@@ -2,7 +2,6 @@ package com.sans.rest.services.impl;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,13 +13,13 @@ import com.sans.rest.services.IDeviceService;
 @Controller
 public class DeviceService implements IDeviceService {
 
-	private static Logger logger = Logger.getLogger(DeviceService.class);
+	//private static Logger logger = Logger.getLogger(DeviceService.class);
 
 	@Override
 	@RequestMapping(value = "/constant", method = RequestMethod.GET)
 	public @ResponseBody
 	ProductJsonBean fetchConstants(@RequestParam(value = "constantID", required = true) String constantID, HttpServletRequest request) {
-		Logger.getLogger(this.getClass()).info(" hostname   " + request.getLocalName());
+		//Logger.getLogger(this.getClass()).info(" hostname   " + request.getLocalName());
 
 		ProductJsonBean returnBean = new ProductJsonBean();
 		// returnBean = deviceDelegate.getConstant(constantID,

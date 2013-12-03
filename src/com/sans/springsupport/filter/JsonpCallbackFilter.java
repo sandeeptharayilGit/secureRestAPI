@@ -50,7 +50,7 @@ public class JsonpCallbackFilter implements Filter {
 
 		if (httpRequest.getMethod().equalsIgnoreCase("OPTIONS") || httpRequest.getMethod().equalsIgnoreCase("POST")) {
 
-			httpResponse.setHeader("Access-Control-Allow-Origin", AppConstants.CUSTOMERDOMAINLIST.get(httpRequest.getRemoteHost()));
+			httpResponse.setHeader("Access-Control-Allow-Origin", "*");
 			httpResponse.setHeader("Access-Control-Allow-Headers", "SecureToken,Content-Type");
 		}
 		Map<String, String[]> params = httpRequest.getParameterMap();
