@@ -34,7 +34,7 @@ private static Date date = new Date(System.currentTimeMillis());
 		ArrayList<VehicleJsonBean> list= SharedData.getInstance().getList();
 		System.out.println("data: " +list.size()+list.toString() + "\n\n"); 
 		response.getWriter();
-		response.getWriter().write("data: " +list.size()+list.toString() + "\n\n");
+		response.getWriter().write("data: " +list.toString() + "\n\n");
 		//response.getWriter().write("data: " +list.size() +"Items \n "+ list.toString() + "\n\n");
 		response.getWriter().flush();
 		response.getWriter().close();

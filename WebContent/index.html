@@ -1,100 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="myApp" lang="en">
 <head>
+<script type="text/javascript" src="js/jquery-1.5.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+<script src="app.js"></script>
 <meta charset="utf-8" />
 <title>Jsonp Example</title>
-<script type="text/javascript" src="js/jquery-1.5.min.js"></script>
+
 </head>
-<body>
-	<button onclick="getData();">push data</button>
-	<br>
-	<div id="restApiResult"></div>
-	<br><br>
+<body ng-controller="MainCtrl">
+	<button ng-click="pushData()">push data</button>
 	<span>Server Sent Event Example</span>
-	<div id="result" ></div>
+	<div id="result" ng-repeat="msg in messages">
+		<div ng-bind="msg.owner"></div>
+			<span ng-bind="msg.isAutomaticGear" /> 
+			 <span ng-bind="msg.brand" /> <span ng-bind="msg.model" /> <span
+				ng-bind="msg.engineCapacity" /> <span
+				ng-bind="msg.numberOfCylinders" />
 
-	<script type="text/javascript">
-	var ivountrer=0;
-		function getData() {
-			ivountrer++;
-			myUrl = 'http://localhost:8080/secureRestAPI/securerestapi/addVehicle';
-			//myUrl = 'http://148.162.216.26:9090/dejdss/restapi/vehicle?name=bmw&value=dsd';
-			/*$.ajax({
-				type : 'POST',
-				url : myUrl,
-				contentType : 'appliaction/json',
-				dataType : 'json',
-				 processData : false,
-				data : {"name":"BMW","model":"X1"},
-				headers:{"SecureToken": "atom"},
-				success : myFunction,
-				error : myFailureFunction
-			});*/
-			var analyticsData={name:"BMW",model:"X1"}
-			  $.ajax({type : "POST",
-                 url: myUrl,
-                 data:JSON.stringify(analyticsData),
-                 contentType : 'application/json',
-                 dataType : 'json',
-                 processData : false,
-                 headers:{"SecureToken":"atom"}
-                 }).success(function(data, status, headers, config) {
-                         console.dir(data);
-                         console.log("pushed data successfully");
-                 }).
-                 error(function(data, status, headers, config) {
-                   console.log("data= "+data);
-                   console.log("status= "+status)
-                   console.log("error in pushing data ");
-                 }); 
-		}
-
-		function myFunction(data) {
-			console.log("In myFunction()");
-			console.log(data);
-		}
-
-		function myCallBack(data) {
-			console.log("In myCallBack()");
-			console.log(data);
-			$("#restApiResult").text(data.vehicleName);
-		}
-
-		function myFailureFunction(data) {
-			console.log("In myFailureFunction()");
-			console.log(data);
-		}
-	</script>
-
-	<script type="text/javascript">
-
-	/**SSE Example - Start**/
-		if (typeof (EventSource) !== "undefined") {
-			var source = new EventSource("getServerData");
-			/**What to do when a connection is opened*/
-			source.onopen = function(event){
-				//console.log("Connection Opened");
-				//console.log(event);
-				//$("#result").text("Message Type : "+event.type+" ,Time : "+event.timeStamp);
-			};
-			
-			/**What to do when data is received*/
-			source.onmessage = function(event) {
-				console.log("Message Recieved: ");console.log(event);
-				$("#result").text("Message Type : "+event.type+" :: "+event.data);
-			};
-			
-			/**What to do when an error is thrown*/
-			source.onerror = function(message){
-				console.log("Error Recieved: ");console.log(message);
-				//$("#result").text("Message Type : "+message.type+" ,Time : "+new Date(message.timeStamp));
-			};
-			
-		} else {
-			$("#result").text("Sorry, your browser does not support server-sent events...");
-		}
-	/**SSE Example - End**/
-	
-	</script>
+		
+	</div>
 </body>
 </html>
