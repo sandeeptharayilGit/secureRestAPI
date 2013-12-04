@@ -1,6 +1,7 @@
 package com.sans.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sans.model.SharedData;
+import com.sans.model.VehicleJsonBean;
 
 public class ServerData extends HttpServlet {
 
@@ -29,9 +31,11 @@ private static Date date = new Date(System.currentTimeMillis());
 		serverTime.setServerHour(date.getHours()+"");
 		serverTime.setServerMin(date.getMinutes()+"");
 		serverTime.setServerSec(date.getSeconds()+"");*/
-		
+		ArrayList<VehicleJsonBean> list= SharedData.getInstance().getList();
+		System.out.println("data: " +list.size()+list.toString() + "\n\n"); 
 		response.getWriter();
-		response.getWriter().write("data: " +SharedData.getInstance().getList().toString() + "\n\n");
+		response.getWriter().write("data: " +list.size()+list.toString() + "\n\n");
+		//response.getWriter().write("data: " +list.size() +"Items \n "+ list.toString() + "\n\n");
 		response.getWriter().flush();
 		response.getWriter().close();
 	}
