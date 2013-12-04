@@ -16,6 +16,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.codehaus.jackson.map.ObjectMapper;
+
 import com.sans.springsupport.wrapper.GenericResponseWrapper;
 import com.sans.utils.AppConstants;
 import com.sans.utils.AppUtils;
@@ -53,6 +55,8 @@ public class JsonpCallbackFilter implements Filter {
 			httpResponse.setHeader("Access-Control-Allow-Origin", "*");
 			httpResponse.setHeader("Access-Control-Allow-Headers", "SecureToken,Content-Type");
 		}
+		ObjectMapper mapper = new ObjectMapper();
+
 		Map<String, String[]> params = httpRequest.getParameterMap();
 
 		String callback = (params.containsKey("callback") && (params.get("callback")[0] != null)) ? (params.get("callback")[0]).trim() : "";
